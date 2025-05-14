@@ -178,14 +178,6 @@ class NDITracker(SKSBaseTracker):
         self._get_transform = getattr(ndicapy, 'ndiGetBXTransform')
         self._capture_string = 'BX:0801'
 
-        firmware = self._get_firmware_version()
-        if firmware in (' AURORA Rev 007', ' AURORA Rev 008',
-                        ' Polaris Vega 008',
-                        ' Polaris Spectra Rev 006', ' Polaris Spectra Rev 007'):
-            self._get_frame = getattr(ndicapy, 'ndiGetTXFrame')
-            self._get_transform = getattr(ndicapy, 'ndiGetTXTransform')
-            self._capture_string = 'TX:0801'
-
     def _get_firmware_version(self):
         """
         Gets the device's firmware version, and sets
